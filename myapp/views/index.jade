@@ -1,0 +1,15 @@
+html
+	head
+		h1 my site - #{title}
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		block scripts
+			script(src ="/javascripts/jQuery-1.7.1.js")
+			script(src ="/javascripts/underscore.js")
+			script(src ="/javascripts/backbone.js")
+			script(src ="/javascripts/socket.io.js")
+			script(src ="/javascripts/AppController.js")
+	body
+		block content
+		block foot
+			#footer
+				p some footer here
