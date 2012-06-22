@@ -1,8 +1,3 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express')
   , routes = require('./routes');
 
@@ -16,12 +11,19 @@ var twit = new twitter({
   access_token_secret: 'tRzdjC0CTJ8p7mJIbCdEosgGcIZTKP9375mrf5FPi4c'
 });
 
-
-// Configuration
-
 app.configure(function(){
+  app.set("view options", {layout: false});
+  app.register('html', {
+    compile: function(str, options){
+      return function(locals){
+        return str;
+      };
+    }
+  });
+
+  app.set('view engine', 'html'); 
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
+
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
@@ -40,12 +42,28 @@ app.configure('production', function(){
 app.listen(3000);
 var io = io.listen(app);
 
-// Routes
+app.get('/', function (req, res) {
+	res.render("index.html");
+});
 
-app.get('/', routes.index);
-
-io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
+io.sockets.on('connection', function (socket) 
+{
+	socket.on('tweetSearch', function(data)
+	{
+		var toSearch = data;
+				
+		twit.stream('user', {track: toSearch}, function(stream) {
+			stream.on('data', function (data) {
+				io.sockets.emit('searchResult', data );
+		    });
+		    stream.on('end', function (response) {
+		        // Handle a disconnection
+		    });
+		    stream.on('destroy', function (response) {
+		        // Handle a 'silent' disconnection from Twitter, no end/error event fired
+		    });
+		});
+	});
 });
 
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

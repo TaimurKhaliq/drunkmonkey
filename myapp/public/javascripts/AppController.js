@@ -17,6 +17,29 @@ window.tw =
 		{
 			window.tw.socket.on('news', function (data) {
 			    console.log(data);
+			});
+			
+			window.tw.socket.on("searchResult", function (data)
+			{
+				console.log(data);
+			});
+			
+			$(".magic").bind('keypress', function(e) 
+			{
+				var code = (e.keyCode ? e.keyCode : e.which);
+				if(code === 13) 
+				{
+					// i am going to send this keyword to the server uhmm this is really not 
+					// using backbone.js but whatever ill refactor it in the future
+					var searchItem = $(".magic").val();
+					window.tw.socket.emit("tweetSearch", searchItem); 
+					window.tw.socket.on("searchResult", function (data)
+					{
+						// instantiate stream view
+						// pass it the data
+						console.log(data);
+					});
+				}
 			});		
 		}		
 	});
