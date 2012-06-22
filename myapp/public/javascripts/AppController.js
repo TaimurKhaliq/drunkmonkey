@@ -19,6 +19,15 @@ window.tw =
 			    console.log(data);
 			});
 			
+			var tweetCol = new tweetCollection();
+			var tweetView = new tweetStream({ model: tweetCol });
+			
+			window.tw.socket.on("searchResult", function (data)
+			{
+				var tweetModel = new tweet( { tweet: data });
+				tweetCol.add(tweetModel);
+			});
+			
 			$(".magic").bind('keypress', function(e) 
 			{
 				var code = (e.keyCode ? e.keyCode : e.which);
@@ -28,12 +37,6 @@ window.tw =
 					// using backbone.js but whatever ill refactor it in the future
 					var searchItem = $(".magic").val();
 					window.tw.socket.emit("tweetSearch", searchItem); 
-					window.tw.socket.on("searchResult", function (data)
-					{
-						// instantiate stream view
-						// pass it the data
-						console.log(data);
-					});
 				}
 			});		
 		}		

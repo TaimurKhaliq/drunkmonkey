@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.scrollable {
+        height: 300px;
+        overflow: scroll;
+}
