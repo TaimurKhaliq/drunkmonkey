@@ -86,6 +86,23 @@ io.set('authorization', function (data, accept) {
     }
 });
 
+io.configure('production', function(){
+  	io.enable('browser client etag');
+  	io.set('log level', 1);
+	io.enable('browser client minification');  // send minified client
+	io.enable('browser client etag');          // apply etag caching logic based on version number
+	io.enable('browser client gzip');          // gzip the file
+	io.set('log level', 1);                    // reduce logging
+
+	io.set('transports', [
+	 'websocket'
+	, 'flashsocket'
+	, 'htmlfile'
+	, 'xhr-polling'
+	, 'jsonp-polling'
+	]);
+});
+
 //
 // Server begins here
 //
