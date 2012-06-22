@@ -61,6 +61,10 @@ var port = process.env.PORT || 5000;
 app.listen(port);
 var io = io.listen(app);
 
+io.configure(function(){
+  	io.set("transports", ["xhr-polling"]); 
+  	io.set("polling duration", 10);
+});
 //
 // Websocket server configuration
 //
@@ -86,10 +90,7 @@ io.set('authorization', function (data, accept) {
     }
 });
 
-io.configure('production', function(){
-  	io.set("transports", ["xhr-polling"]); 
-  	io.set("polling duration", 10);
-});
+
 
 //
 // Server begins here
