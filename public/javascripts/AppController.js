@@ -13,7 +13,7 @@ window.tw = {};
 		{
 			var tweetCol = new tweetCollection();
 			var tweetView = new tweetStream({ model: tweetCol });
-			var socket = io.connect('http://deep-light-2010.herokuapp.com/');
+			var socket = io.connect(window.location.hostname);
 			socket.on("searchResult", function (data)
 			{
 				var tweetModel = new tweet( { tweet: data });
