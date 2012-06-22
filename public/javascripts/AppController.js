@@ -15,10 +15,6 @@ window.tw =
 		
 		start : function ()
 		{
-			window.tw.socket.on('news', function (data) {
-			    console.log(data);
-			});
-			
 			var tweetCol = new tweetCollection();
 			var tweetView = new tweetStream({ model: tweetCol });
 			

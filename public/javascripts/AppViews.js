@@ -9,12 +9,6 @@ var tweetStream = Backbone.View.extend({
 		this.model.bind("add", this.render);
 	},
 	
-	renderTest: function ()
-	{
-	   console.log("ADDING NEW MODEL!");
-	   console.log(this.models);
-	},
-	
 	render: function ()
 	{
 		var html = '';
@@ -30,7 +24,6 @@ var tweetStream = Backbone.View.extend({
 				data: text
 			});
 		}
-		console.log(html);
 		$("#streamChat").html(html);
 	}
 });
