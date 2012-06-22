@@ -56,7 +56,9 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-app.listen(3000);
+var port = process.env.PORT || 5000;
+
+app.listen(port);
 var io = io.listen(app);
 
 //
