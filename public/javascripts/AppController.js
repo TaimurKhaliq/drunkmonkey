@@ -1,3 +1,5 @@
+window.tw = {};
+
 (function ()
 {
 	var AppController = Backbone.Router.extend(
