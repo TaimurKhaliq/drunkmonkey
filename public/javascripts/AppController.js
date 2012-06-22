@@ -1,7 +1,7 @@
 window.tw =
 {	
 	reload: null,
-	socket : io.connect('http://localhost:3000')
+	socket : io.connect('http://deep-light-2010.herokuapp.com/')
 };
 
 (function ()
