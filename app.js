@@ -94,13 +94,8 @@ io.configure('production', function(){
 	io.enable('browser client gzip');          // gzip the file
 	io.set('log level', 1);                    // reduce logging
 
-	io.set('transports', [
-	 'websocket'
-	, 'flashsocket'
-	, 'htmlfile'
-	, 'xhr-polling'
-	, 'jsonp-polling'
-	]);
+  	io.set("transports", ["xhr-polling"]); 
+  	io.set("polling duration", 10);
 });
 
 //
