@@ -19,11 +19,6 @@ window.tw =
 			    console.log(data);
 			});
 			
-			window.tw.socket.on("searchResult", function (data)
-			{
-				console.log(data);
-			});
-			
 			$(".magic").bind('keypress', function(e) 
 			{
 				var code = (e.keyCode ? e.keyCode : e.which);

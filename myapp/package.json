@@ -5,5 +5,8 @@
   , "dependencies": {
       "express": "2.5.1"
     , "jade": ">= 0.0.1"
+    , "connect": ">= 2.3.3"
+    , "socket.io": "0.9.6"
+    , "ntwitter": "0.3.0"
   }
 }
