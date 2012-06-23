@@ -63,8 +63,6 @@ app.listen(port);
 var io = io.listen(app);
 
 io.configure('production', function(){
-  io.enable('browser client etag');
-  io.set('log level', 1);
   io.set("transports", ["xhr-polling"]); 
   io.set("polling duration", 10);
 });
