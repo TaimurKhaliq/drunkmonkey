@@ -18,6 +18,7 @@ var twit = new twitter({
   access_token_key: '519032317-OqeLHC4HCcKrUSKgPfzuykZSOuuH6t9CvshSViFi',
   access_token_secret: 'tRzdjC0CTJ8p7mJIbCdEosgGcIZTKP9375mrf5FPi4c'
 });
+
 var MemoryStore = express.session.MemoryStore;
 var sessionStore = new MemoryStore();
 
@@ -64,14 +65,8 @@ var io = io.listen(app);
 io.configure('production', function(){
   io.enable('browser client etag');
   io.set('log level', 1);
-
-  io.set('transports', [
-    'websocket'
-  , 'flashsocket'
-  , 'htmlfile'
-  , 'xhr-polling'
-  , 'jsonp-polling'
-  ]);
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10);
 });
 
 //
