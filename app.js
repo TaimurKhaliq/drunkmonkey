@@ -61,10 +61,19 @@ var port = process.env.PORT || 5000;
 app.listen(port);
 var io = io.listen(app);
 
-io.configure(function(){
-  	io.set("transports", ["xhr-polling"]); 
-  	io.set("polling duration", 10);
+io.configure('production', function(){
+  io.enable('browser client etag');
+  io.set('log level', 1);
+
+  io.set('transports', [
+    'websocket'
+  , 'flashsocket'
+  , 'htmlfile'
+  , 'xhr-polling'
+  , 'jsonp-polling'
+  ]);
 });
+
 //
 // Websocket server configuration
 //
@@ -155,5 +164,3 @@ io.sockets.on('connection', function (socket)
         clearInterval(intervalID);
 	});
 });
-
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

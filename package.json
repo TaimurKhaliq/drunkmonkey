@@ -1,16 +1,20 @@
 {
-    "name": "myapp"
-  , "version": "0.0.1"
-  , "private": true
-  , "dependencies": {
-      "express": "2.5.1"
-    , "jade": "0.26.1"
-    , "connect": "2.3.3"
-    , "socket.io": "0.9.6"
-    , "ntwitter": "0.3.0"
+  "name": "myapp",
+  "version": "0.0.1-4",
+  "private": true,
+  "dependencies": {
+    "express": "2.5.1",
+    "jade": "0.26.1",
+    "connect": "2.3.3",
+    "socket.io": "0.9.6",
+    "ntwitter": "0.3.0"
   },
   "engines": {
     "node": "0.6.x",
-    "npm":  "1.0.x"
+    "npm": "1.0.x"
+  },
+  "subdomain": "tweetmonkey",
+  "scripts": {
+    "start": "app.js"
   }
 }
