@@ -59,9 +59,9 @@ app.configure('production', function(){
 
 var io = io.listen(app);
 
-var port = 80;
+var port = process.env.PORT || 5000;
 
-app.listen(80);
+app.listen(port);
 
 io.configure('production', function(){
   io.set("transports", ["xhr-polling"]); 
