@@ -57,14 +57,15 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-var port = process.env.PORT || 5000;
-
-app.listen(port);
 var io = io.listen(app);
+
+var port = 80;
+
+app.listen(80);
 
 io.configure('production', function(){
   io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 20);
+  io.set("polling duration", 10);
 });
 
 //
