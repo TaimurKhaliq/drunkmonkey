@@ -64,7 +64,7 @@ var io = io.listen(app);
 
 io.configure('production', function(){
   io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10);
+  io.set("polling duration", 20);
 });
 
 //
