@@ -64,7 +64,8 @@ var port = process.env.PORT || 5000;
 app.listen(port);
 
 io.configure('production', function(){
-	io.set("transports", ["xhr-polling", "flashsocket", "json-polling"]);
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10);
 });
 
 //
